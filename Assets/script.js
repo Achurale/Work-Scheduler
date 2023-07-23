@@ -11,35 +11,17 @@ $(document).ready(function () {
   // time-block containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
 
-  $(".saveBtn").click(function() {
-    var divID = $(this).parent().attr('id')
-    console.log(parent)
+  $('.saveBtn').click(function() {
+    localStorage.setItem($(this).parent().attr('id'), $(this).parent().children('.description').val())
   })
-  
+
 
   // TODO: Add code to apply the past, present, or future class to each time
   // block by comparing the id to the current hour. HINTS: How can the id
   // attribute of each time-block be used to conditionally add or remove the
   // past, present, and future classes? How can Day.js be used to get the
   // current hour in 24-hour time?
-  if (dayjs().hour(7).isBefore(dayjs())){
-    $('#hour-7').addClass('past')
-  } else if (dayjs().hour(7).isSame(dayjs())) {
-    $('#hour-7').addClass('present')
-  } else if (dayjs().hour(7).isAfter(dayjs())) {
-    $('#hour-7').addClass('future')
-  }
-
-
-  if (dayjs().hour(8).isBefore(dayjs())){
-    $('#hour-8').addClass('past')
-  } else if (dayjs().hour(8).isSame(dayjs())) {
-    $('#hour-8').addClass('present')
-  } else if (dayjs().hour(8).isAfter(dayjs())) {
-    $('#hour-8').addClass('future')
-  }
-
-  if (dayjs().hour(9).isBefore(dayjs())){
+    if (dayjs().hour(9).isBefore(dayjs())){
     $('#hour-9').addClass('past')
   } else if (dayjs().hour(9).isSame(dayjs())) {
     $('#hour-9').addClass('present')
@@ -111,18 +93,20 @@ $(document).ready(function () {
     $('#hour-5').addClass('future')
   }
 
-  if (dayjs().hour(18).isBefore(dayjs())){
-    $('#hour-6').addClass('past')
-  } else if (dayjs().hour(18).isSame(dayjs())) {
-    $('#hour-6').addClass('present')
-  } else if (dayjs().hour(18).isAfter(dayjs(), 'hour')) {
-    $('#hour-6').addClass('future')
-  }
-
   // TODO: Add code to get any user input that was saved in localStorage and set
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
-  //
+  
+  $('#text-9').text(localStorage.getItem('hour-9'))
+  $('#text-10').text(localStorage.getItem('hour-10'))
+  $('#text-11').text(localStorage.getItem('hour-11'))
+  $('#text-12').text(localStorage.getItem('hour-12'))
+  $('#text-1').text(localStorage.getItem('hour-1'))
+  $('#text-2').text(localStorage.getItem('hour-2'))
+  $('#text-3').text(localStorage.getItem('hour-3'))
+  $('#text-4').text(localStorage.getItem('hour-4'))
+  $('#text-5').text(localStorage.getItem('hour-5'))
+
   // TODO: Add code to display the current date in the header of the page.
   $('#currentDay').text(dayjs().format("MM-DD-YYYY"))
 });
